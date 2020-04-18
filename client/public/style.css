@@ -1,0 +1,357 @@
+*{
+    margin :0px;
+    padding : 0px;
+    overflow-y: hidden;/*Hide vertical scroll bar*/
+    overflow-x: hidden;/*Hide horizontal scroll bar*/
+}
+/* Styles for login and signup inputs */
+.loginInput{
+    border: 0px;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+    padding-left: 25px;
+    width: 75%;
+    background: transparent !important;
+    color: white;
+    font-size: medium; 
+}
+.loginInput:focus{
+    color: white;
+}
+/* Styles for glyph icon */
+.loginIcon{
+    position: relative;
+    top:22px;
+    color: white;
+}
+
+video{
+    position : absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;    
+}
+/* Styles for signup and login form */
+.loginForm{
+    margin-top: 17%;
+}
+
+.loginForm h2{
+    padding-left: 21%;
+    color: #8cfffb;/* #2196f3;*/
+    font-size: 25px;
+    font-weight: bold;
+    font-style: italic;
+}
+.loginForm h2 label:hover {
+    color: #a9f8ee;
+    text-shadow: 0 0 5px white;
+}
+/* Styles for signup form */
+.signupForm{
+    margin-top: 14%;
+}
+/* Styles for login and signup placeholder for different browsers effet */
+input[type="email"]::placeholder { /* Firefox, Chrome, Opera */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+} 
+input[type="email"]:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+} 
+  
+input[type="email"]::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium; 
+}
+input[type="password"]::placeholder { /* Firefox, Chrome, Opera */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+} 
+input[type="password"]:-ms-input-placeholder { /* Internet Explorer 10-11 */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+} 
+  
+input[type="password"]::-ms-input-placeholder { /* Microsoft Edge */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium; 
+}
+input[id="userName"]::placeholder { /* Firefox, Chrome, Opera */ 
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+} 
+/* Styles for login and signup button effetc */
+.loginButton{
+    color:white;
+    background: transparent;
+    width: 120px;
+    height:34px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+}
+/* Styles for login and signup button effetc */
+.loginButton:hover {
+    background-color: #2196f3;
+    box-shadow: 0 0 10px #a9f8ee, 0 0 40px #a9f8ee, 0 0 10px #a9f8ee;
+}
+/* Styles for signup button */
+.signupDiv{
+    padding-left: 26%;
+    
+}
+/* Style for Login Heading */
+h1{
+    color:white;
+}
+
+/* Styles for validate label on login and signup */
+.loginValidateMsg{
+    color : white;
+    font-size: small;
+
+}
+
+/* Styles for success alert */
+.registerSuccessAlert{
+    text-align: center;
+    margin-top: 0%;
+    font-size: medium;
+    width: 80%;
+    color: #f5f6f4;
+    background-color: #4CAF50;
+    border-color: #c3e6cb;
+}
+/* Style for Header background */
+.headerClass {
+    background-color: #030823;
+    color: #a9f8ee;
+    height: 55px;
+    font-size: medium;
+    font-weight: bold;
+    line-height: 55px;
+}
+/* Styles for sidebar */
+.sideBarContainer{
+    background-color: #030823;
+    height: 577px;
+}
+.sideBarClass{
+    color: white;
+    font-size: small;
+    font-weight: bold;
+    line-height: 53px;
+    text-align: center;
+}
+
+.sideBarElement{
+    border: 1px solid whitesmoke;
+    padding: 0px;
+}
+.sideBarElement button {
+    width: 100%;
+    background: transparent;
+}
+
+  /* ProjectList */
+  .projectListContainer{
+      background-color: white;
+      height: 577px;
+      color: black
+  }
+  ul{
+      border:1px solid black;   
+  }
+
+  .selectRoles{
+    color: white; 
+    font-weight: bold;
+    font-style: italic;
+    font-size: medium;
+    border: 0px;
+    border-bottom: 1px solid grey;
+    border-radius: 0px;
+    padding-left: 25px;
+    width: 75%;
+    background: transparent !important;
+    color: white;
+    font-size: medium;
+    margin-bottom: 19px;
+  }
+  .rolesOption{
+    background: #070b1f;
+    color: white;
+  }
+  /* Project Style Fields */
+  .createProjectContainer{
+      background-color: white;
+      height: 577px;
+      border: 1px solid #070b1f;
+  }
+  .createProjectDiv{
+    border: 1px solid #070b1f; 
+    border-radius : 19px;
+    width: 66%; 
+    height: 70%;
+    margin-left : 16%;
+    margin-bottom : 2%;
+    margin-top : 8%;
+  }
+  .createProjectHeading{
+      margin-top: 30px;
+      color : #070b1f;
+  }
+  .projectLabelDiv{
+    margin-top: 4%;
+  }
+  .projectLabelDiv label{
+      display: block;
+      color: #070b1f;
+  }
+
+  .projectNameInput{
+    width: 70%;
+    display: block;
+    margin-top: 3%;
+    height: 26px;
+    border: none;
+    border-bottom: 1px solid black;
+    color: black;
+    font-weight: 500;
+  }
+
+  .selectUser{
+    width: 70%;
+    display: block;
+    margin-top: 7%;
+    color: black;
+    height: 30px;
+    font-weight: 500;
+  }
+
+  .projectDescription{
+    width: 70%;
+    display: block;
+    height: 60px;
+    /* border: none;
+    border-bottom: 1px solid black; */
+    color: black;
+    /* margin-top: 6%; */
+    font-weight: 500;
+    line-height: 15px;
+  }
+
+  .projectFieldDiv{
+      height: 100%;
+  }
+  .searchBarDiv{
+    border: 1px solid black;
+    width: 60%;
+    position: absolute;
+    left: 16px;
+    background: #030823; 
+}
+
+.searchBarPara{
+    color: #fff9f9;
+    margin-bottom: 0px;
+    height: 37px;
+    margin-top: 0px;
+    bottom: 10px;
+    position: relative;
+    text-align: left;
+    padding-left: 4px;
+    font-size: medium;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.projectLabelMsg{
+    height: 36px;
+    position: relative;
+    bottom: 15px;
+    margin-bottom: 0px;
+    font-weight: normal;
+    text-align: initial;
+}
+
+.createProjectForm{
+    margin-bottom: 0px;
+    text-align: left;
+}
+.createProjectName{
+    position : relative;
+    top : 7px;
+}
+/* Ticket styles */
+.createTicketDiv{
+    height : 84%;
+    margin-top : 4%;
+    margin-left: 10%;
+    width: 80%;
+}
+.createTicketHeading{
+    margin-top: 20px;
+    color: #070b1f; 
+    margin-bottom: 3%;
+}
+.ticketLabels{
+    color: black;
+    /* text-align: left; */
+}
+.selectRolesTicket{
+    margin-bottom: 0px;;
+}
+.ticketDescription{
+    height: 40%;
+    width: 100%;
+}
+.ticketComments{
+    height: 70%;
+    width: 100%; 
+}
+.ticketButton{
+    margin-top: 35%;
+}
+/*Nultiselect*/
+.multiSearchDiv{
+    height: 43px;
+    background: black;
+}
+
+.multiSearchDiv label {
+    position: relative;
+    bottom: 3px;
+    right: 14px;
+    font-size: medium;
+    font-weight: 500;
+}
+.multiSearchInputDiv{
+   padding-right: 0px;
+}
+.multiSearchlabelDiv{
+    text-align: left;
+}
+.multiSearchBarDiv{
+    width: 63%;
+}
