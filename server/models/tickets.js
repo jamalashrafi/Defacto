@@ -8,10 +8,12 @@ const ticketSchema = new Schema({
     project : String,
     priority : String,
     status : String,
-    assignedTo : [String],
+    assignedTo : [{}],
     assignedBy : String,
     createdDate : Date,
     comments : String,
+    fileToUpload : String,
+    filext : String,
     history : [{}]
 });
 

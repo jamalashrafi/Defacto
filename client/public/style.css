@@ -172,6 +172,12 @@ h1{
     width: 100%;
     background: transparent;
 }
+.sideBarLeftCol{
+    padding-right: 0px;
+}
+.sideBarRightCol{
+    padding-left: 0px;
+}
 
   /* ProjectList */
   .projectListContainer{
@@ -303,6 +309,12 @@ h1{
     position : relative;
     top : 7px;
 }
+.projectLblCol{
+    padding-right: 0px;
+}
+.projctLblRight{
+    padding-left: 0px;
+}
 /* Ticket styles */
 .createTicketDiv{
     height : 84%;
@@ -354,4 +366,8 @@ h1{
 }
 .multiSearchBarDiv{
     width: 63%;
+}
+.uploadButton{
+    margin-bottom: 25%;
+    width: 100%;
 }

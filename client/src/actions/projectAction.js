@@ -17,7 +17,7 @@ export const fetchProjectList = () => async dispatch => {
         if (isNetworkError(error))  msg="It seems you are not connected to network";
         else if (error.response.status === 401)   msg="Invalid credentials";  
         else  msg = "Please try again ";
-        console.log("Error in fetching projectList is ",error);
+        //console.log("Error in fetching projectList is ",error);
         dispatch({ type : Project_LIST_ERROR, payload : msg})
 
     }
@@ -28,7 +28,7 @@ export const getUserRoles = () => async dispatch => {
         const response = await axios.get("http://localhost:41111/");
         localStorage.setItem("userRoles", response.data[0].roleName);
     }catch(error){
-        console.log("Error Message from UserTable", error);
+        //console.log("Error Message from UserTable", error);
     }
 }//Error handling left
 
@@ -36,16 +36,16 @@ export const getUserRoles = () => async dispatch => {
 export const getSearchData = () => async dispatch => {
     try{
         const response = await axios.get("http://localhost:41111/getUsers");
-        console.log("response", response);
+        //console.log("response", response);
         let filteredUserList = response.data.map(user => { return user.userName });
-        console.log("filteredUserList", filteredUserList)
+        //console.log("filteredUserList", filteredUserList)
         dispatch({ type : SEARCHBAR_DATA, payload : filteredUserList});
     }catch(error){
         let msg = "";
         if (isNetworkError(error))  msg="It seems you are not connected to network";
         else if (error.response.status === 401)   msg="Invalid credentials";  
         else  msg = "Please try again ";
-        console.log("Error in fetching projectList is ",error, msg);
+        //console.log("Error in fetching projectList is ",error, msg);
     }
 }//Error handling left
 
@@ -57,7 +57,7 @@ export const createProject = (projectObj, callback) => async dispatch => {
     let headers = { "authorization" : authorization, 'Accept' : 'application/json', 'Content-Type': 'application/json' };
     try{
         const response = await axios.post("http://localhost:41111/createProject", projectObj, { headers });//Es6 {header : header}
-        console.log("response.data after create project", response.data);
+        //console.log("response.data after create project", response.data);
         dispatch({ type : PROJECT_LIST, payload : response.data.projectList});
         callback(response);
     }catch(error){
@@ -65,6 +65,6 @@ export const createProject = (projectObj, callback) => async dispatch => {
         if (isNetworkError(error))  msg="It seems you are not connected to network";
         else if (error.response.status === 401)   msg="Invalid credentials";  
         else  msg = "Please try again ";
-        console.log("Error in fetching projectList is ",error, msg);
+        //console.log("Error in fetching projectList is ",error, msg);
     }
 }

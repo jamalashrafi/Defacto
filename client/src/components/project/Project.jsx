@@ -25,12 +25,12 @@ class Project extends Component {
         return(
             <div  className="projectListContainer">
                 <div className="row">
-                    <div className="col-xl-2 createNewProject">
+                    <div className="col-xs-2 col-sm-5 col-md-4 col-lg-3 col-xl-2 createNewProject">
                     <button className="btn btn-primary loginButton" style={{ backgroundColor : "blue"}}
                                     onClick={this.createNewProject}>New</button>
                     </div>
-                    <div className="col-xl-8 "></div>
-                    <div className="col-xl-2 createNewProject">
+                    <div className="col-xs-8 col-sm-2 col-md-4 col-lg-6 col-xl-8 "></div>
+                    <div className="col-xs-2 col-sm-5 col-md-4 col-lg-3 col-xl-2 createNewProject">
                     <button className="btn btn-primary loginButton" style={{ backgroundColor : "blue"}}>Search</button>
                     </div>
                 </div>{/**Header Section of ProjectMain Page ends here */}

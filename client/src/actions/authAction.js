@@ -39,7 +39,7 @@ export const signin = (loginObj, callback) => async dispatch => {
         localStorage.setItem("userProfile", JSON.stringify(response.data.userProfile));
         callback(response);
    } catch(error){
-        console.log("error in processing", error.response.status,  "----------", error.status);
+        //console.log("error in processing", error.response.status,  "----------", error.status);
         let msg = "";
         if (isNetworkError(error))  msg="It seems you are not connected to network";
         else if (error.response.status === 401)   msg="Invalid credentials";  

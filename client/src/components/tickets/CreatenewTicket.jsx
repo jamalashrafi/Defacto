@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { connect } from "react-redux";
 import Tickets from "./Tickets.jsx";
 import SearchBar from "../../util/searchbox.js";
+import CreateTicketForm from "./CreateTicketForm.jsx";
 import MultiSelectSearchBar from "../../util/multiselectSearch.js";
 import { validate } from "../../util/utility.js";
 import * as actions from "../../actions";
@@ -10,7 +11,7 @@ var selectedUsers = [];
 class CreatenewTicket extends Component{
     state = { projectName : "", ticketDescription : "", comments  : "", ticketName : "", ticketNameValidate : "", priority : "", selectedUsers : [],
               priorityValidate : "", projectNameValidate : "", ticketDescriptionValidate : "", selectedUsersValidate : [],
-              selectedValue : [], status : "", statusValidate : ""};
+              selectedValue : [], status : "", statusValidate : "", fileToUpload : "", binaryFile : "", filext : ""};
 
     back = () => this.props.changeRender(Tickets);
 
@@ -26,28 +27,50 @@ class CreatenewTicket extends Component{
 
     handleStatus = event => this.setState({status : event.target.value});
 
+    handleFileUpload = (event, binaryFile, name) => this.setState({fileToUpload : event, binaryFile, filext : name});
+
     addSelectedUsers = user => {
-        let indexOfUser = selectedUsers.indexOf(user);
-        if(indexOfUser > -1)selectedUsers[indexOfUser]="";
-        else selectedUsers.push(user);
+        debugger
+        let isMatch = false;
+        selectedUsers.map( (assignedUser, index) => { 
+            if(assignedUser["data"] === user["data"]){
+                isMatch = true;
+                selectedUsers.splice(index, 1);
+            }});
+        if(isMatch === false)selectedUsers.push(user);
+        isMatch = false; 
         console.log("Selected Users", selectedUsers);
     }
 
     createTicket = event => {
-        debugger
         event.preventDefault();
         const createdBy = localStorage.getItem("userProfile");
-        let projectObj = { ticketName : this.state.ticketName,
-                           ticketDescription : this.state.ticketDescription,
+        let ticketObj = {  ticketName : this.state.ticketName,
+                           description : this.state.ticketDescription,
                            priority : this.state.priority,
+                           project : this.state.projectName,
                            status : this.state.status,
-                           selectedUsers : selectedUsers,
-                           ticketDescription : this.state.ticketDescription,
-                           comments : this.state.comments
+                           assignedTo : selectedUsers,
+                           comments : this.state.comments,
+                           assignedBy : createdBy,
+                           filext : this.state.filext,
+                           fileToUpload : this.state.fileToUpload
                             };
 
         if(validate(this, "createTicket")){
             flag = true;
+            if(this.state.fileToUpload){
+            this.props.upload(this.state.fileToUpload, response => {
+                ticketObj["fileToUpload"] = response;
+                this.props.saveTicket(ticketObj, responseData => {
+                    console.log("responseData". responseData);
+                })
+            })}else{ 
+                this.props.saveTicket(ticketObj, responseData => {
+                    console.log("responseData". responseData);
+                    alert("Ticket Saved");
+                })
+            }
             // this.props.createProject(projectObj, response => {
             //     if(response.data.Msg === "Same project name exists") this.setState({ projectNameValidate : "username already exists"})
             //     else if(response.data.Msg === "project saved successfully") flag = false;
@@ -57,6 +80,7 @@ class CreatenewTicket extends Component{
     }
    
     render(){
+       
         return(
             <div className="createProjectContainer">
                 <div className="createProjectDiv createTicketDiv">
@@ -97,6 +121,8 @@ class CreatenewTicket extends Component{
                                         <div className="row">
                                             <div className="col-xl-4 form-group createProjectName">
                                                 <label className="ticketLabels">Status :</label>
+                                                <CreateTicketForm handleFileUpload={this.handleFileUpload}
+                                                fileToUpload={this.state.fileToUpload} binaryFile={this.state.binaryFile} filext={this.state.filext}/>
                                             </div>
                                             <div className="col-xl-8 form-group createProjectForm createProjectName">
                                             <select className="customSelect selectRoles selectRolesTicket projectNameInput" onChange = {this.handleStatus} id="statusSelect">

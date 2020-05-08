@@ -25,7 +25,6 @@ class Signup extends Component {
                         password:this.state.password,
                         email:this.state.email,
                         role:this.state.role};
-        console.log(userObj);
         if(validate(this, "signup")){
             flag = true;
             this.props.signup(userObj, response => {

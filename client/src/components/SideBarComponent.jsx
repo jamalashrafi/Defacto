@@ -26,13 +26,13 @@ export default class SideBarComponent extends Component{
     render(){
           return (
                <div id="sideBarComp">
-                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-12 sideBarElement">
+                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 sideBarElement">
                          <button value="dashboard" onClick={this.changeRender}>Dashboard</button>
                     </div>
-                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-12 sideBarElement">
+                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 sideBarElement">
                          <button value="project" onClick={this.changeRender}>Project</button>
                     </div>
-                    <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3 col-xl-12 sideBarElement">
+                    <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 sideBarElement">
                          <button value="ticket" onClick={this.changeRender}>Tickets</button>
                     </div>
                </div>

@@ -5,6 +5,7 @@ const UserRoles = require("./controllers/userRoles.js");
 const { listProjects } = require("./controllers/projectController.js");
 const passportService = require("./services/passport");
 const { listRoles } = require("./controllers/userRoles.js");
+const FileUpload = require("./controllers/fileUpload.js");
 const passport = require("passport");
 
 const requireAuth = passport.authenticate('jwt', { session : false });//It is a kind of middleware that tells that request should go through passport
@@ -28,5 +29,13 @@ module.exports = function(app){
     app.get("/listTickets", requireAuth, function(req, res){TicketController.listTickets(req, res);  });
     app.post("/createTicket", requireAuth, TicketController.createTicket);
     app.post("/updateTicket", requireAuth, TicketController.updateTicket);
+
+    //FileUpload
+    app.post('/uploads', FileUpload.upload.single("file"), function(req, res){
+        res.send({ file : req.file});
+       // FileUpload.getFileName(req, res,req.file);
+    });
+    app.get('/image/:filename', FileUpload.getFileName);
+    app.post("/files/:filename", FileUpload.deleteFile);
 
 }

@@ -11,6 +11,8 @@ class MultiSelectSearchBar extends Component{
             this.props.getSearchData(); 
         else if(this.props.selectNode === "project")
             this.props.fetchProjectList();
+        console.log("this.props.selectedUsers11111111111", this.props.ticketAssignedTo);
+        if(this.props.ticketAssignedTo)this.setState({filteredData : this.props.ticketAssignedTo, queryString : this.props.ticketAssignedTo[0].data + "..."});
     }
 
     handleSearch = event => {
@@ -19,7 +21,6 @@ class MultiSelectSearchBar extends Component{
         if(queryString.length > 0) this.setState({searchResultsDisplay : true}); else this.setState({searchResultsDisplay:false})
         if(this.props.selectNode === "assigned"){
             if(this.state.searchedData.length > 0 ){
-                console.log("searchedDataJJ", this.state.searchedData);
                 this.setState({ filteredData : this.state.searchedData.filter(user => {
                     return user["data"].toLowerCase().includes(queryString.toLowerCase())})});
             }else{
@@ -30,7 +31,6 @@ class MultiSelectSearchBar extends Component{
                     return userObj;
                 }) ;
                 this.setState({searchedData},() => {
-                    console.log("searchedDataJ", this.state.searchedData);
                     this.setState({ filteredData : this.state.searchedData.filter(user => {
                         return user["data"].toLowerCase().includes(queryString.toLowerCase())})})});
             }
@@ -46,7 +46,7 @@ class MultiSelectSearchBar extends Component{
     hideSearchBar = event => this.setState({searchResultsDisplay : false});
   
     selectUser = event => { 
-       
+       debugger
        var checkedUser = this.state.filteredData.map(user => { 
            if(user.data === event.target.value && user.checked === false) user["checked"] = true
            else if(user.data === event.target.value && user.checked === true) user["checked"] = false;
@@ -57,9 +57,10 @@ class MultiSelectSearchBar extends Component{
         //     else if(user1.data === event.target.value && user1.checked === true) user1["checked"] = false;
         //     return user1;
         //  }); 
-         this.setState({filteredData : checkedUser});
+         this.setState({filteredData : checkedUser, queryString : event.target.value + "..."});
          timer=2;
-       this.props.addSelectedUsers(event.target.value); 
+         let assignedToObj = { data : event.target.value, checked : true }
+       this.props.addSelectedUsers(assignedToObj); 
     }
     hideSearchDiv = () => {
         
@@ -72,7 +73,7 @@ class MultiSelectSearchBar extends Component{
     
     }
     render(){
-        console.log("filtered data is ", this.state.filteredData)
+        console.log("this.props.selectedUsers11111111111", this.props.ticketAssignedTo);
         return(
             <div  id="searchMainDiv" onBlur={this.hideSearchDiv}>
                 <input placeholder="search user..." className="projectNameInput"

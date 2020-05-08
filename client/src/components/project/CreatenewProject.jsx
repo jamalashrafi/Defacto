@@ -42,25 +42,25 @@ class CreatenewProject extends Component{
                 <div className="createProjectDiv">
                     <h3 className="createProjectHeading">Create New Project</h3>
                     <div className="row">
-                        <div className="col-xl-1"></div>
-                        <div className="col-xl-10 projectLabelDiv">
+                        <div className="col-xs-1 col-sm-1 col-md-1 col-lg-1 col-xl-1"></div>
+                        <div className="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11 projectLabelDiv">
                             <form>
                                 <div className="row">
-                                    <div className="col-xl-4 form-group createProjectName">
+                                    <div className="col-xs-6 col-sm-5 col-md-5 col-lg-4 col-xl-4 form-group createProjectName projectLblCol">
                                         <label>Project Name :</label>
                                     </div>
-                                    <div className="col-xl-8 form-group createProjectForm createProjectName">
+                                    <div className="col-xs-6 col-sm-7 col-md-7 col-lg-8 col-xl-8 form-group createProjectForm createProjectName projctLblRight">
                                     <input type="text" onChange={this.handleProjectName} value={this.state.projectName} 
                                         className="formControl projectNameInput" />   
                                         <label className="loginValidateMsg projectLabelMsg">{ this.state.projectNameValidate }</label> 
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-xl-4 form-group createProjectName">
+                                    <div className="col-xs-6 col-sm-5 col-md-5 col-lg-4 col-xl-4 form-group createProjectName projectLblCol">
                                          <label>Manager :</label>
                                          <label>Description :</label>
                                     </div>
-                                    <div className="col-xl-8 form-group createProjectForm">
+                                    <div className="col-xs-6 col-sm-7 col-md-7 col-lg-8 col-xl-8 form-group createProjectForm projctLblRight">
                                         <SearchBar handleProjectManager={this.handleProjectManager}/>
                                         <label className="loginValidateMsg projectLabelMsg">{ this.state.projectManagerValidate }</label>
                                         <textarea className="formControl projectDescription"  onChange={this.handleProjectDescription} 
@@ -70,8 +70,8 @@ class CreatenewProject extends Component{
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="col-xl-4"></div>
-                                    <div className="col-xl-4">
+                                    <div className="col-xs-6 col-sm-5 col-md-5 col-lg-5 col-xl-4"></div>
+                                    <div className="col-xs-6 col-sm-6 col-md-6 col-lg-7 col-xl-4">
                                         <button className="btn btn-primary loginButton " style={{ backgroundColor : "blue"}}
                                         onClick={this.createProject}>Create Project</button>
                                     </div>

@@ -21,6 +21,8 @@ exports.createTicket = function(req, res, next){
         assignedBy : req.body.assignedBy,
         createdDate : new Date(),
         comments : req.body.comments,
+        fileToUpload : req.body.fileToUpload,
+        filext : req.body.filext,
         history : []
     }
     
@@ -50,8 +52,11 @@ exports.createTicket = function(req, res, next){
         const ticketInstance = new ticketModel(saveObj);
         ticketInstance.save(err => {
             if(err) return next(err);
-
-            res.json("Ticket saved successfully");
+            ticketModel.find({}, (err,results) => {
+                if(err) return res.send(err);   
+                console.log("Ticket save request object", results);
+                res.send({ ticketList : results, Msg : "ticket saved successfully"});
+            });
         });
 
 });
@@ -70,6 +75,8 @@ exports.updateTicket = function(req, res, next){
         assignedBy : req.body.assignedBy,
         createdDate : new Date(),
         comments : req.body.comments,
+        fileToUpload : req.body.fileToUpload,
+        filext : req.body.filext,
         history : []
     }
   

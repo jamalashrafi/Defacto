@@ -6,13 +6,14 @@ class SearchBar extends Component{
     state = {queryString : "", searchedData : [], searchResultsDisplay : false};
 
     componentDidMount(){ 
+        debugger;
         this.props.getSearchData(); 
         this.props.fetchProjectList();
+        if(this.props.projectName)this.setState({queryString : this.props.projectName});
     }
 
     handleSearch = event => {
         let queryString = event.target.value;
-        console.log("this.props.serachedUsers", queryString.length);
         if(queryString.length > 0) this.setState({searchResultsDisplay : true}); else this.setState({searchResultsDisplay:false})
         if(this.props.selectNode === "assigned"){
             let searchedData = this.props.serachedUsers.filter(user => {return user.toLowerCase().includes(queryString.toLowerCase())});}
@@ -26,13 +27,13 @@ class SearchBar extends Component{
     hideSearchBar = event => this.setState({searchResultsDisplay : false});
   
     selectUser = event => { 
-        debugger;
         timer = 2
         this.setState({ queryString : event.target.innerText, searchResultsDisplay : false});
         if(this.props.selectNode === "assigned")
             this.props.handleProjectManager(event.target.innerText); 
-        else if(this.props.selectNode === "project")
+        else if(this.props.selectNode === "project"){
             this.props.handleProjectName(event.target.innerText);
+        }
     }
     
     hideSearchDiv = () => {
@@ -45,6 +46,7 @@ class SearchBar extends Component{
     }
 
     render(){
+        console.log("this.state.queryString", this.state.queryString, "------", this.props.queryString)
         return(
             <div  id="searchMainDiv" onBlur={this.hideSearchDiv}>
                 <input placeholder="search user..." className="projectNameInput"

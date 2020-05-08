@@ -80,4 +80,25 @@ export const  validate = (_this, Msg) => {
 }
 
 export const  isNetworkError = error => { return !!error.isAxiosError && !error.response; }
+
+export const fileConvertTobase64 = (event, callback) => {
+    var base64String = "";
+    if(event){
+        var reader = new FileReader();
+    // Closure to capture the file information.
+    var targetFile = event.target.files[0];
+    reader.readAsBinaryString(targetFile);
+        reader.onload = (function() {
+        return function(event) {
+        var binaryData = event.target.result;
+        //Converting Binary Data to base 64
+        base64String = window.btoa(binaryData);
+        //showing file converted to base64
+        callback(base64String);
+        };
+        })(targetFile);
+       
+    }
+
+}
   

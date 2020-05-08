@@ -28,7 +28,6 @@ class Login extends Component {
     componentWillUnmount(){ this.props.clearAuthStore(); }
    
     onSubmit = event => {
-        debugger;
         event.preventDefault();
         if(validate(this, "login")){
         let loginObj = { userName : this.state.userName,

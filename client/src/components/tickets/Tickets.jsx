@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as actions from "../../actions";
 import CreatenewTicket from "./CreatenewTicket.jsx";
+import TicketDetails from "./TicketDetails.jsx";                                                                                                                            
 
 
 class Ticket extends Component{
@@ -9,16 +10,19 @@ class Ticket extends Component{
     componentDidMount = () => {
         
         this.props.fetchTicketList();
-        console.log("Ticket data is ---", this.props.ticketList);
     }
     renderTicketList = () => {
-        return this.props.ticketList.map( (item, index)  => {
-         return <li className="listGroupItem" key={index}> { item.ticketName } </li>
+        return this.props.ticketList.map( (ticket, index)  => {
+        return <li className="listGroupItem" onClick={this.showDetails.bind(this,ticket)} key={index}>  { ticket.ticketName } </li>
      })
     }
     createNewTicket = () => {
         //this.props.props.history.push("/createNewProject");
         this.props.changeRender(CreatenewTicket);
+    }
+
+    showDetails = ticket => {
+        this.props.changeRender(TicketDetails, ticket);
     }
 
     render(){
